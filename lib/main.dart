@@ -6,6 +6,11 @@ import 'src/api_endpoints/authentication_endpoints.dart';
 import 'src/api_endpoints/billing_timed_event_endpoints.dart';
 import 'src/api_endpoints/session_endpoints.dart';
 
+export 'response_models/billing_timed_summary_item.dart';
+export 'response_models/secure_cookie.dart';
+export 'response_models/session.dart';
+export 'response_models/user.dart';
+
 final getIt = GetIt.instance;
 
 @InjectableInit(
