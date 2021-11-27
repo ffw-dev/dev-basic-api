@@ -1,7 +1,7 @@
+import 'package:dev_basic_api/response_models/session.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import 'response_models/session.dart';
 
 @Singleton()
 @Injectable()

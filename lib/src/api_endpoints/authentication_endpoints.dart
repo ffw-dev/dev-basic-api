@@ -1,5 +1,6 @@
-import 'package:dev_basic_api/src/response_models/secure_cookie.dart';
-import 'package:dev_basic_api/src/response_models/user.dart';
+
+import 'package:dev_basic_api/response_models/secure_cookie.dart';
+import 'package:dev_basic_api/response_models/user.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 

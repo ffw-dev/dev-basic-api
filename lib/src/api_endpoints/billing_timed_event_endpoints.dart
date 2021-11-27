@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dev_basic_api/src/response_models/billing_timed_summary_item.dart';
+import 'package:dev_basic_api/response_models/billing_timed_summary_item.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../main.dart';

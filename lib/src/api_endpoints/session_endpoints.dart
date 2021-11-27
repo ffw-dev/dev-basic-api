@@ -1,5 +1,5 @@
 
-import 'package:dev_basic_api/src/response_models/session.dart';
+import 'package:dev_basic_api/response_models/session.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../main.dart';
