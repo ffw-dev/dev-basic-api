@@ -17,3 +17,10 @@ This is first version of dev-basic api package.
 
 This package is responsible for comunicating with dev-basic server for dart as well as providing necessary serialization and models that the api returns.
 
+!!! main.dart file includes configureInjectionDependencies function which has to be called before runnApp(); !!!
+
+```
+void main() async {
+      configureInjectionDependencies();
+      runApp(const MyApp());
+}
