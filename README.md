@@ -17,7 +17,7 @@ This is first version of dev-basic api package.
 
 This package is responsible for comunicating with dev-basic server for dart as well as providing necessary serialization and models that the api returns.
 
-Install:
+Install pubspec.yaml file:
 ```
   dev_basic_api:
     git:
