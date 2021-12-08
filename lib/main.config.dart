@@ -12,6 +12,7 @@ import 'src/api_endpoints/billing_timed_event_endpoints.dart' as _i3;
 import 'src/api_endpoints/session_endpoints.dart' as _i5;
 import 'src/base_http_service.dart'
     as _i4; // ignore_for_file: unnecessary_lambdas
+import 'src/api_endpoints/production_clients_apis/production_client_api_billing_summary_endpoint.dart' as _i7;
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -24,6 +25,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i5.SessionEndpoints(get<_i4.BaseHttpService>()));
   gh.factory<_i6.AuthenticationEndpoints>(
       () => _i6.AuthenticationEndpoints(get<_i4.BaseHttpService>()));
+  gh.factory(
+      () => _i7.ProductionClientApisBillingSummaryEndpoint(get<_i4.BaseHttpService>()));
   gh.singleton<_i4.BaseHttpService>(_i4.BaseHttpService());
   return get;
 }

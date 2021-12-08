@@ -9,6 +9,8 @@ class BaseHttpService {
   Session? session;
   late final Dio _dio;
 
+  Dio get dio => _dio;
+
   BaseHttpService(){
     _dio = Dio();
     _dio.options.baseUrl = "https://dev-basic.api.ffw.io/v6/";
