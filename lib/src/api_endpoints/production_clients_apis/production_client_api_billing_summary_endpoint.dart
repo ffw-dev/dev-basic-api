@@ -34,11 +34,11 @@ class ProductionClientApisBillingSummaryEndpoint {
         data, (data) => BillingTimedSummaryItem.fromJson(data));
   }
 
-  Future<void> authenticateAndGetSummary(String setupURL, String authToken) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummary(String setupURL, String authToken) async {
     var httpClientBaseUrlTemp = getIt<BaseHttpService>().dio.options.baseUrl;
     getIt<BaseHttpService>().dio.options.baseUrl = setupURL;
 
-    var loginResponse = await getIt<BaseHttpService>()
+    return await getIt<BaseHttpService>()
         .getFetch(
             "AuthKey/Login",
             {
@@ -55,8 +55,11 @@ class ProductionClientApisBillingSummaryEndpoint {
       });
       getIt<BaseHttpService>().session =
           null; // Remove session from baseHttpClient singleton created for client api
+
+      getIt<BaseHttpService>().dio.options.baseUrl = httpClientBaseUrlTemp;
+
+      return BaseResponse.fromApi(value, (value) => BillingTimedSummaryItem.fromJson(value));
     });
 
-    getIt<BaseHttpService>().dio.options.baseUrl = httpClientBaseUrlTemp;
   }
 }
