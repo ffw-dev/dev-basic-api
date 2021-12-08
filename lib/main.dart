@@ -1,3 +1,4 @@
+import 'package:dev_basic_api/src/api_endpoints/production_clients_apis/production_client_api_billing_summary_endpoint.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,6 +22,7 @@ final getIt = GetIt.instance;
 void configureInjectionDependencies() => $initGetIt(getIt);
 
 class DevBasicApi {
+  static final ProductionClientApisBillingSummaryEndpoint productionClientApisBillingSummaryEndpoint = getIt<ProductionClientApisBillingSummaryEndpoint>();
   static final BillingTimedEventEndpoints billingTimedEventEndpoints = getIt<BillingTimedEventEndpoints>();
   static final SessionEndpoints sessionEndpoints = getIt<SessionEndpoints>();
   static final AuthenticationEndpoints authenticationEndpoints = getIt<AuthenticationEndpoints>();
