@@ -50,15 +50,15 @@ class ProductionClientApisBillingSummaryEndpoint {
 
       getIt<BaseHttpService>().session = response.body.results[0];
 
-      _getSummary(20000).then((value) {
-        print(value.body.totalCount);
+      var summaryResponse = _getSummary(20000).then((value) {
+        return value;
       });
+
       getIt<BaseHttpService>().session =
           null; // Remove session from baseHttpClient singleton created for client api
 
       getIt<BaseHttpService>().dio.options.baseUrl = httpClientBaseUrlTemp;
-
-      return BaseResponse.fromApi(value, (value) => BillingTimedSummaryItem.fromJson(value));
+      return summaryResponse;
     });
 
   }
