@@ -50,7 +50,7 @@ class ProductionClientApisBillingSummaryEndpoint {
 
       getIt<BaseHttpService>().session = response.body.results[0];
 
-      var summaryResponse = _getSummary(20000).then((value) {
+      var summaryResponse = _getSummary(fromPeriod).then((value) {
         return value;
       });
 
