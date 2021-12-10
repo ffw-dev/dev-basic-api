@@ -6,6 +6,6 @@ import 'package:dotenv/dotenv.dart';
 void main() {
   configureInjectionDependencies();
   load(); // Loads env variables
-  getIt<ProductionClientApisBillingSummaryEndpoint>().authenticateAndGetSummary(env['SVT0BASEURL']!, env['SVT0TOKEN']!);
-  getIt<ProductionClientApisBillingSummaryEndpoint>().authenticateAndGetSummary(env['SVT1BASEURL']!, env['SVT1TOKEN']!);
+  getIt<ProductionClientApisBillingSummaryEndpoint>().authenticateAndGetSummary(fromPeriod: 20000, baseURL: env['SVT0BASEURL']!, authToken: env['SVT0TOKEN']!);
+  getIt<ProductionClientApisBillingSummaryEndpoint>().authenticateAndGetSummary(baseURL: env['SVT1BASEURL']!, authToken: env['SVT1TOKEN']!);
 }

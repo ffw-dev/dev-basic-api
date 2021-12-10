@@ -34,9 +34,9 @@ class ProductionClientApisBillingSummaryEndpoint {
         data, (data) => BillingTimedSummaryItem.fromJson(data));
   }
 
-  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummary(String setupURL, String authToken) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummary({int fromPeriod = 20000, required String baseURL, required String authToken}) async {
     var httpClientBaseUrlTemp = getIt<BaseHttpService>().dio.options.baseUrl;
-    getIt<BaseHttpService>().dio.options.baseUrl = setupURL;
+    getIt<BaseHttpService>().dio.options.baseUrl = baseURL;
 
     return await getIt<BaseHttpService>()
         .getFetch(
