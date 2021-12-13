@@ -44,7 +44,6 @@ class BaseHttpService {
         }
       }
 
-      print(formData.fields);
       late Response<dynamic> response;
 
       try {
