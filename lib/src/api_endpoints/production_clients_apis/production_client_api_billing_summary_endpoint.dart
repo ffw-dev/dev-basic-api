@@ -12,12 +12,12 @@ import '../../base_response.dart';
 class ProductionClientApisBillingSummaryEndpoint {
   ProductionClientApisBillingSummaryEndpoint(BaseHttpService baseHttpService);
 
-  Future<BaseResponse<BillingTimedSummaryItem>> _getSummary(int fromDay, int? toDay) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> _getSummary(DateTime from, DateTime? to) async {
     var query = {
       'period': json.encode({
         'from':
-            DateTime.now().subtract(Duration(days: fromDay)).toIso8601String(),
-        'to': DateTime.now().subtract(Duration(days: toDay ?? 0)).toIso8601String(),
+            from.toIso8601String(),
+        'to': to != null ? to.toIso8601String() : DateTime.now().toIso8601String(),
       }),
       'user': '',
       'collectionId': '',
@@ -34,7 +34,7 @@ class ProductionClientApisBillingSummaryEndpoint {
         data, (data) => BillingTimedSummaryItem.fromJson(data));
   }
 
-  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummary({int fromPeriod = 20000, required String baseURL, required String authToken}) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummary({required DateTime fromPeriod, required String baseURL, required String authToken}) async {
     var httpClientBaseUrlTemp = getIt<BaseHttpService>().dio.options.baseUrl;
     getIt<BaseHttpService>().dio.options.baseUrl = baseURL;
 
@@ -63,7 +63,7 @@ class ProductionClientApisBillingSummaryEndpoint {
 
   }
 
-  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummaryFromRange({int fromPeriod = 20000, int? toPeriod, required String baseURL, required String authToken}) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummaryFromRange({required DateTime fromPeriod, required DateTime? to,required String baseURL, required String authToken}) async {
     var httpClientBaseUrlTemp = getIt<BaseHttpService>().dio.options.baseUrl;
     getIt<BaseHttpService>().dio.options.baseUrl = baseURL;
 
@@ -79,7 +79,7 @@ class ProductionClientApisBillingSummaryEndpoint {
 
       getIt<BaseHttpService>().session = response.body.results[0];
 
-      var summaryResponse = _getSummary(fromPeriod, toPeriod).then((value) {
+      var summaryResponse = _getSummary(fromPeriod, to).then((value) {
         return value;
       });
 
