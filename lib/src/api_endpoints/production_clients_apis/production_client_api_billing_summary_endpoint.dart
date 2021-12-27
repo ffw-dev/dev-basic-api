@@ -63,7 +63,7 @@ class ProductionClientApisBillingSummaryEndpoint {
 
   }
 
-  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummaryFromRange({int fromPeriod = 20000, required String baseURL, required String authToken}) async {
+  Future<BaseResponse<BillingTimedSummaryItem>> authenticateAndGetSummaryFromRange({int fromPeriod = 20000, int? toPeriod, required String baseURL, required String authToken}) async {
     var httpClientBaseUrlTemp = getIt<BaseHttpService>().dio.options.baseUrl;
     getIt<BaseHttpService>().dio.options.baseUrl = baseURL;
 
@@ -79,7 +79,7 @@ class ProductionClientApisBillingSummaryEndpoint {
 
       getIt<BaseHttpService>().session = response.body.results[0];
 
-      var summaryResponse = _getSummary(fromPeriod, null).then((value) {
+      var summaryResponse = _getSummary(fromPeriod, toPeriod).then((value) {
         return value;
       });
 
