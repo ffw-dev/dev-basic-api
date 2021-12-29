@@ -21,9 +21,7 @@ class AuthenticationEndpoints {
   }
 
   Future<BaseResponse<SecureCookie>?>? secureCookieLogin(FormData formData) async {
-    print('before secureLogin');
     var response = await getIt<BaseHttpService>().postFetch("SecureCookie/Login", formData, true).then((value) => value);
-    print('after secureLogin');
     if(response.isEmpty) {
       return null;
     }
