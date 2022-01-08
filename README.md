@@ -22,7 +22,7 @@ Install pubspec.yaml file:
   dev_basic_api:
     git:
       url: https://github.com/ffw-dev/dev-basic-api.git
-      ref: main
+      ref: dev_basic_clients_apis_merged
 ```
 
 
