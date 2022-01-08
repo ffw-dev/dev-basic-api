@@ -26,7 +26,7 @@ Install pubspec.yaml file:
 ```
 
 
-!!! main.dart file includes configureInjectionDependencies function which has to be called before runnApp(); !!!
+!!! main.dart file includes configureInjectionDependencies function which has to be called before runnApp(); !!! - this is because this module uses dependecy injection to inject baseHttpService class responsible for all http calls to all endpoint classes
 
 ```
 import 'package:dev_basic_api/main.dart';
